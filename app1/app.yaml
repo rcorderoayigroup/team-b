@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: team-b-app1
+  namespace: argocd
+spec:
+  project: team-b
+  source:
+    repoURL: https://github.com/rcorderoayigroup/team-b.git
+    path: projects/team-b/app1
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: team-b
+  syncPolicy:
+    automated: {}
